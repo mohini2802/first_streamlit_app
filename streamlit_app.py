@@ -65,6 +65,7 @@ try:
         with my_cnx.cursor() as my_cur:
             my_cur.execute("delete from pc_rivery_db.public.fruit_load_list where fruit_name like 'test' or fruit_name ='from streamlit'")
         bck_frm_fnctn_get_list = get_fruit_list()
+        streamlit.dataframe(bck_frm_fnctn_get_list)
         add_fruit = streamlit.text_input('What fruit would you like to add?')
         if not add_fruit:
             streamlit.error("Please enter fruit you would like to add.")
