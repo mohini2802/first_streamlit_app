@@ -61,9 +61,9 @@ def get_fruit_list():
 
 try:
     if streamlit.button("View Our Fruit List - Add Your Favourites!"):
-    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    with my_cnx.cursor() as my_cur:
-        my_cur.execute("delete from pc_rivery_db.public.fruit_load_list where fruit_name like 'test' or fruit_name ='from streamlit'")
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        with my_cnx.cursor() as my_cur:
+            my_cur.execute("delete from pc_rivery_db.public.fruit_load_list where fruit_name like 'test' or fruit_name ='from streamlit'")
     bck_frm_fnctn_get_list = get_fruit_list()
     add_fruit = streamlit.text_input('What fruit would you like to add?')
     if not add_fruit:
