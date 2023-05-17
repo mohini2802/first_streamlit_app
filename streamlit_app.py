@@ -60,6 +60,7 @@ try:
         bck_frm_fnctn_get_list = get_fruit_list()
         streamlit.dataframe(bck_frm_fnctn_get_list)
         add_fruit = streamlit.text_input('What fruit would you like to add')
+        streamlit.text(add_fruit)
         # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
         # back_from_function = insert_row_snowflake(add_fruit)
         # streamlit.text(back_from_function)
