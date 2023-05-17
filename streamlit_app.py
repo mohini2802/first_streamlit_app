@@ -64,8 +64,8 @@ try:
         streamlit.dataframe(bck_frm_fnctn_get_list)
         add_fruit = streamlit.text_input('What fruit would you like to add?')
         streamlit.text(add_fruit)
-        back_from_action = insert_row_snowflake(add_fruit)
-        streamlit.dataframe(back_from_action)
+        my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(add_fruit)")
+        streamlit.dataframe(bck_frm_fnctn_get_list)
     
 except URLError as e:
     streamlit.error()
