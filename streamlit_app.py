@@ -60,6 +60,7 @@ try:
         bck_frm_fnctn_get_list = get_fruit_list()
         streamlit.dataframe(bck_frm_fnctn_get_list)
         add_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
+        streamlit.text(add_fruit)
         if not add_fruit:
             streamlit.error("Please enter fruit you would like information about.")
         else:
