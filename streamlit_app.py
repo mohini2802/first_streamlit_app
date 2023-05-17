@@ -69,7 +69,7 @@ try:
         else:
             streamlit.text("in else") 
             back_from_action = insert_row_snowflake(add_fruit)
-             streamlit.dataframe(back_from_action)
+            streamlit.dataframe(back_from_action)
     
 except URLError as e:
     streamlit.error()
