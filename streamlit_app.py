@@ -48,9 +48,10 @@ def insert_row_snowflake(new_fruit_1):
     return 'Thank you for adding'+ new_fruit_1
 
 def get_fruit_list():
-    my_cnx.cursor().execute("select * from pc_rivery_db.public.fruit_load_list")
-    my_data_row = my_cur.fetchall()
-    streamlit.text("The fruit load list contains:")
+    with my_cnx.cursor() as my_cur:
+        my_cnx.cursor().execute("select * from pc_rivery_db.public.fruit_load_list")
+        my_data_row = my_cur.fetchall()
+        streamlit.text("The fruit load list contains:")
     return my_data_row
 
 try:
