@@ -62,8 +62,7 @@ try:
         add_fruit = streamlit.text_input('What fruit would you like to add')
         streamlit.write('Thank you for adding ', add_fruit)
         streamlit.text(add_fruit)
-        # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-        # back_from_function = insert_row_snowflake(add_fruit)
+        back_from_function = insert_row_snowflake("jackfruit")
         # streamlit.text(back_from_function)
     
 except URLError as e:
