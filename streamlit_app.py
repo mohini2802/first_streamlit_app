@@ -55,7 +55,7 @@ def insert_row_snowflake(new_fruit):
    return 'Thank you for adding'+ new_fruit
 
 def get_fruit_list():
-   my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
+   my_cnx.cursor().execute("select * from pc_rivery_db.public.fruit_load_list")
    my_data_row = my_cur.fetchall()
    return my_data_row
                           
@@ -64,8 +64,8 @@ if streamlit.button("View Our Fruit List - Add Your Favourites!"):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     with my_cnx.cursor() as my_cur:
         my_cur.execute("delete from pc_rivery_db.public.fruit_load_list where fruit_name like 'test' or fruit_name ='from streamlit'")
-        bck_frm_fnctn_insrt = insert_row_snowflake(add_fruit)
-        bck_frm_fnctn_get_list = get_fruit_list()
+    bck_frm_fnctn_get_list = get_fruit_list()
+    bck_frm_fnctn_insrt = insert_row_snowflake(add_fruit)
     streamlit.dataframe(my_data_row)
     
   
