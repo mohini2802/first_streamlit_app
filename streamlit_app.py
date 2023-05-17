@@ -43,10 +43,10 @@ except URLError as e:
     streamlit.error()
 
   
-def insert_row_snowflake(new_fruit_1):
-    my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(new_fruit_1)")
-    return 'Thank you for adding'+ new_fruit_1
-
+def insert_row_snowflake(new_fruit):
+   my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(new_fruit)")
+   return 'Thank you for adding'+ new_fruit
+                          
 def get_fruit_list():
     with my_cnx.cursor() as my_cur:
         my_cur.execute("select * from pc_rivery_db.public.fruit_load_list")
@@ -59,14 +59,10 @@ try:
         my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
         bck_frm_fnctn_get_list = get_fruit_list()
         streamlit.dataframe(bck_frm_fnctn_get_list)
-        add_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
-        streamlit.text(add_fruit)
-        if not add_fruit:
-            streamlit.error("Please enter fruit you would like information about.")
-        else:
-            back_from_action = insert_row_snowflake(add_fruit)
-        streamlit.dataframe(bck_frm_fnctn_get_list)
-        streamlit.dataframe(my_data_row)
+        add_fruit = streamlit.text_input('What fruit would you like to add') 
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+        back_from_function = insert_row_snowflake(add_fruit)
+        streamlit.text(back_from_function)
     
 except URLError as e:
     streamlit.error()
