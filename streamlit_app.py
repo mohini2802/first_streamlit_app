@@ -44,8 +44,8 @@ except URLError as e:
 
   
 def insert_row_snowflake(new_fruit_1):
-   my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(new_fruit_1)")
-   return 'Thank you for adding'+ new_fruit_1
+    my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(new_fruit_1)")
+    return 'Thank you for adding'+ new_fruit_1
 
 def get_fruit_list():
     my_cnx.cursor().execute("select * from pc_rivery_db.public.fruit_load_list")
