@@ -44,9 +44,9 @@ except URLError as e:
 
   
 def insert_row_snowflake(add_fruit):
-   print("1")
+   streamlit.text("1")
    my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(add_fruit)")
-   print("2")
+   streamlit.text("2")
    return 'Thank you for adding'+ add_fruit
 
 def get_fruit_list():
@@ -64,9 +64,11 @@ try:
         streamlit.dataframe(bck_frm_fnctn_get_list)
         add_fruit = streamlit.text_input('What fruit would you like to add?')
         if not add_fruit:
+            streamlit.text("in")
             streamlit.error("Please enter fruit you would like to add.")
         else:
-             back_from_action = insert_row_snowflake(add_fruit)
+            streamlit.text("in else") 
+            back_from_action = insert_row_snowflake(add_fruit)
              streamlit.dataframe(back_from_action)
     
 except URLError as e:
