@@ -66,6 +66,7 @@ try:
     if not fruit_choice:
         streamlit.error("Please enter fruit you would like to add.")
     else:
+        my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
         my_cnx.cursor().execute("insert into pc_rivery_db.public.fruit_load_list values(add_fruit)")
         my_cnx.cursor().execute("select * from pc_rivery_db.public.fruit_load_list")
         my_data_row_1 = my_cur.fetchall()
